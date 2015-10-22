@@ -1,6 +1,23 @@
 [![Build Status](https://semaphoreci.com/api/v1/projects/9d7d365d-19cb-4699-8c84-b76da25ae271/473490/badge.svg)](https://semaphoreci.com/calico/calico-docker--5)
 [![Circle CI](https://circleci.com/gh/projectcalico/calico-docker/tree/master.svg?style=svg)](https://circleci.com/gh/projectcalico/calico-docker/tree/master) [![Coverage Status](https://coveralls.io/repos/projectcalico/calico-docker/badge.svg?branch=master&service=github)](https://coveralls.io/github/projectcalico/calico-docker?branch=master)
 [![Slack Status](https://calicousers-slackin.herokuapp.com/badge.svg)](https://calicousers-slackin.herokuapp.com)
+
+<!--- master only -->
+> # PLEASE NOTE
+>
+> This documentation refers to the HEAD of the calico-docker source tree.
+> Links to the various Calico binaries and Docker images all refer to the 
+> the latest builds from the master branch.  Furthermore, some of these links
+> are not maintained on a high-availability site.
+>
+> For orchestration, or for testing against a known good release, we recommend
+> that you view a specific release tag.
+>
+> Follow the documents for the latest release.
+> Alternatively, view the documentation for the relevant release tag.
+
+<!--- end of master only -->
+
 # Calico on Docker
 As well as providing networking for OpenStack VMs, Calico can provide
 networking for containers in a Docker environment.  Each container gets its 

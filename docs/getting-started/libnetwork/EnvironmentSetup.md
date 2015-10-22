@@ -78,15 +78,26 @@ If you prefer not to do this you can still run the demo but remember to run
 
 ### Getting calicoctl Binary
 
-Get the calicoctl binary onto each host.  You can download a specific 
-[release][calico-releases] from github.  
-For example, to retrieve the latest v0.8.0 release, on each host run
+Get the calicoctl binary onto each host.
 
-	wget https://github.com/projectcalico/calico-docker/releases/download/v0.8.0/calicoctl
+	wget http://www.projectcalico.org/latest/calicoctl
 	chmod +x calicoctl
 	
 This binary should be placed in your `$PATH` so it can be run from any
 directory.
+
+<!--- master only -->
+> Note that projectcalico.org is not an HA repository, so using this download URL is not
+> recommended for any automated production installation process.  Also, the latest
+> calicoctl refers to builds from the master branch which is under active development.
+>
+> For integration and real deployment, we recommend you follow the instructions for a
+> specific release.
+>
+> Follow the documents for the latest release.
+> Alternatively, view the documentation for the relevant release tag.
+
+<!--- end of master only -->
 
 ### Preload the Calico docker image (optional)
 
@@ -94,7 +105,8 @@ You can optionally preload this image to avoid the delay when you run
 `calicoctl node --libnetwork` the first time.  For example, to pull the latest 
 released version, run
 
-    docker pull calico/node-libnetwork:v0.5.0
+    docker pull calico/node:latest
+    docker pull calico/node-libnetwork:latest
 
 ## Final checks
 

@@ -29,9 +29,9 @@ This will start a container on each host. Check they are running
 
 You should see output like this on each node
 
-    vagrant@calico-01:~$ docker ps -a
-    CONTAINER ID        IMAGE                    COMMAND                CREATED             STATUS              PORTS                                            NAMES
-    39de206f7499        calico/node:v0.8.0   "/sbin/my_init"        2 minutes ago       Up 2 minutes                                                         calico-node
+    vagrant@calico-01:~$ docker ps
+    CONTAINER ID        IMAGE                           COMMAND                  CREATED             STATUS              PORTS               NAMES
+    ffe6cb403e9b        calico/node:latest              "/sbin/my_init"          21 seconds ago      Up 20 seconds                           calico-node
 
 ## Networking containers.
 
