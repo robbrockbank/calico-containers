@@ -283,7 +283,7 @@ def node_start(node_image, runtime, log_dir, ip, ip6, as_num, detach,
     # Create default pools if required
     if not ipv4_pools:
         client.add_ip_pool(4, DEFAULT_IPV4_POOL)
-    if not ipv6_pools:
+    if not ipv6_pools and ipv6_enabled():
         client.add_ip_pool(6, DEFAULT_IPV6_POOL)
 
     client.ensure_global_config()
@@ -562,7 +562,7 @@ def _setup_ip_forwarding():
         sys.exit(1)
 
     try:
-        if os.path.exists('/proc/sys/net/ipv6'):
+        if ipv6_enabled():
             with open('/proc/sys/net/ipv6/conf/all/forwarding', 'w') as f:
                 f.write("1")
     except:
@@ -983,3 +983,10 @@ def _get_host_tunnel_ip():
         # Either there's no address or the data is bad.  Treat as missing.
         ip_addr = None
     return ip_addr
+
+def ipv6_enabled():
+    """
+    Return if IPv6 is enabled on the system.
+    :return:  True if IPv6 is enabled on the system.
+    """
+    return os.path.exists('/proc/sys/net/ipv6')
