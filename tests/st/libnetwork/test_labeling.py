@@ -23,11 +23,7 @@ from tests.st.utils.utils import ETCD_CA, ETCD_CERT, \
     ETCD_KEY, ETCD_HOSTNAME_SSL, ETCD_SCHEME, get_ip, \
     retry_until_success, wipe_etcd
 
-POST_DOCKER_COMMANDS = [
-    "docker load -i /code/calico-node.tar",
-    "docker load -i /code/busybox.tar",
-    "docker load -i /code/workload.tar",
-]
+POST_DOCKER_COMMANDS = []
 
 if ETCD_SCHEME == "https":
     ADDITIONAL_DOCKER_OPTIONS = "--cluster-store=etcd://%s:2379 " \

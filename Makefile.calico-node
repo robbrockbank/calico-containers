@@ -4,6 +4,9 @@ include Makefile.calicoctl
 # we can use "custom" build image and test image name
 SYSTEMTEST_CONTAINER?=calico/test:$(SYSTEMTEST_CONTAINER_VER)
 
+DIND_CONTAINER_CREATED=.calico_dind.created
+DIND_CONTAINER_DIR=tests/st/utils/dind
+
 # calicoctl and calico/node current share a single version - this is it.
 CALICOCONTAINERS_VERSION?=$(shell git describe --tags --dirty --always)
 ###############################################################################
@@ -228,6 +231,14 @@ run-etcd-ssl: certs/.certificates.created add-ssl-hostname
 	--listen-client-urls "https://0.0.0.0:2379"
 
 IPT_ALLOW_ETCD:=-A INPUT -i docker0 -p tcp --dport 2379 -m comment --comment "calico-st-allow-etcd" -j ACCEPT
+
+calico/dind-with-images: $(DIND_CONTAINER_CREATED)    ## Create the calico/node image
+
+# Build calico/node docker image - explicitly depend on the container binaries.
+$(DIND_CONTAINER_CREATED): busybox.tar routereflector.tar calico-node.tar workload.tar
+	cp *.tar $(DIND_CONTAINER_DIR)
+	docker build -t calico/dind-with-images $(DIND_CONTAINER_DIR)
+	touch $@
 
 .PHONY: st-checks
 st-checks:

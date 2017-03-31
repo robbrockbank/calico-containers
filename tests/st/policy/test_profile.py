@@ -22,9 +22,7 @@ from tests.st.utils.exceptions import CommandExecError
 from tests.st.utils.utils import assert_network, assert_profile, \
     assert_number_endpoints, get_profile_name
 
-POST_DOCKER_COMMANDS = ["docker load -i /code/calico-node.tar",
-                        "docker load -i /code/busybox.tar",
-                        "docker load -i /code/workload.tar"]
+POST_DOCKER_COMMANDS = []
 
 
 class MultiHostMainline(TestBase):

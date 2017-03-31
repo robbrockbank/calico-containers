@@ -67,8 +67,7 @@ class DockerHost(object):
 
     def __init__(self, name, start_calico=True, dind=True,
                  additional_docker_options="",
-                 post_docker_commands=["docker load -i /code/calico-node.tar",
-                                       "docker load -i /code/busybox.tar"],
+                 post_docker_commands=[],
                  calico_node_autodetect_ip=False,
                  override_hostname=False):
         self.name = name
@@ -113,7 +112,7 @@ class DockerHost(object):
             # Set iptables=false to prevent iptables error when using dind
             # libnetwork
             log_and_run("docker run %s "
-                        "calico/dind:latest "
+                        "calico/dind-with-images:latest "
                         "--iptables=false "
                         "%s" %
                         (docker_args, additional_docker_options))
