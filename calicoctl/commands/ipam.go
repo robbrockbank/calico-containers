@@ -31,6 +31,7 @@ func IPAM(args []string) {
 
     release      Release a Calico assigned IP address.
     show         Show details of a Calico assigned IP address.
+    config       Manage global IPAM settings.
 
 Options:
   -h --help      Show this screen.
@@ -57,6 +58,8 @@ Description:
 		ipam.Release(args)
 	case "show":
 		ipam.Show(args)
+	case "config":
+		ipam.Config(args)
 	default:
 		fmt.Println(doc)
 	}
