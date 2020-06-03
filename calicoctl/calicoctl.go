@@ -41,6 +41,7 @@ func main() {
     convert   Convert config files between different API versions.
     ipam      IP address management.
     node      Calico node management.
+    log-level Calico component log level utility.
     version   Display the version of calicoctl.
 
 Options:
@@ -105,6 +106,8 @@ Description:
 			err = commands.Node(args)
 		case "ipam":
 			err = commands.IPAM(args)
+		case "log-level":
+			err = commands.LogLevel(args)
 		default:
 			err = fmt.Errorf("Unknown command: %q\n%s", command, doc)
 		}

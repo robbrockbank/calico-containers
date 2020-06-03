@@ -30,3 +30,5 @@ require (
 	// k8s.io/apimachinery 1.16.3 is at 72ed19daf4bb
 	k8s.io/apimachinery v0.0.0-20191028221656-72ed19daf4bb
 )
+
+replace github.com/projectcalico/libcalico-go => ../libcalico-go
